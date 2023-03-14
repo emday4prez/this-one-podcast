@@ -26,7 +26,7 @@ export default function Episode({ episode }) {
   return (
     <>
       <Head>
-        <title>{`${episode.title} - Their Side`}</title>
+        <title>{`${episode.title} - This One's On Us`}</title>
         <meta name="description" content={episode.description} />
       </Head>
       <article className="py-16 lg:py-36">
@@ -44,14 +44,14 @@ export default function Episode({ episode }) {
                 />
               </div>
             </div>
-            <p className="ml-24 mt-3 text-lg font-medium leading-8 text-slate-700">
+            {/* <p className="ml-24 mt-3 text-lg font-medium leading-8 text-slate-700">
               {episode.description}
-            </p>
+            </p> */}
           </header>
           <hr className="my-12 border-gray-200" />
           <div
             className="prose prose-slate mt-14 [&>h2]:mt-12 [&>h2]:flex [&>h2]:items-center [&>h2]:font-mono [&>h2]:text-sm [&>h2]:font-medium [&>h2]:leading-7 [&>h2]:text-slate-900 [&>h2]:before:mr-3 [&>h2]:before:h-3 [&>h2]:before:w-1.5 [&>h2]:before:rounded-r-full [&>h2]:before:bg-cyan-200 [&>ul]:mt-6 [&>ul]:list-['\2013\20'] [&>ul]:pl-5 [&>h2:nth-of-type(3n+2)]:before:bg-indigo-200 [&>h2:nth-of-type(3n)]:before:bg-violet-200"
-            dangerouslySetInnerHTML={{ __html: episode.content }}
+            dangerouslySetInnerHTML={{ __html: episode.description }}
           />
         </Container>
       </article>
@@ -60,13 +60,13 @@ export default function Episode({ episode }) {
 }
 
 export async function getStaticProps({ params }) {
-  let feed = await parse('https://their-side-feed.vercel.app/api/feed')
+  let feed = await parse('https://anchor.fm/s/b77f9218/podcast/rss')
   let episode = feed.items
-    .map(({ id, title, description, content, enclosures, published }) => ({
-      id: id.toString(),
-      title: `${id}: ${title}`,
+    .map(({ title, description, enclosures, published }) => ({
+      id: title.split('.')[0],
+      title,
       description,
-      content,
+
       published,
       audio: enclosures.map((enclosure) => ({
         src: enclosure.url,
@@ -90,12 +90,12 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  let feed = await parse('https://their-side-feed.vercel.app/api/feed')
+  let feed = await parse('https://anchor.fm/s/b77f9218/podcast/rss')
 
   return {
-    paths: feed.items.map(({ id }) => ({
+    paths: feed.items.map(({ title }) => ({
       params: {
-        episode: id.toString(),
+        episode: title.split('.')[0],
       },
     })),
     fallback: 'blocking',
