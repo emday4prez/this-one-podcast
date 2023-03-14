@@ -100,7 +100,7 @@ export default function Home({ episodes }) {
   return (
     <>
       <Head>
-        <title>This One's On Us - A sober (but not dry) podcast.</title>
+        <title>This One&apos;s On Us - A sober (but not dry) podcast.</title>
         <meta name="description" content="A sober (but not dry) podcast." />
       </Head>
       <div className="pt-16 pb-12 sm:pb-4 lg:pt-12">

@@ -252,10 +252,10 @@ export function Layout({ children }) {
                   RSSIcon,
                   'https://anchor.fm/s/b77f9218/podcast/rss',
                 ],
-              ].map(([label, Icon]) => (
+              ].map(([label, Icon, href]) => (
                 <li key={label} className="flex">
                   <Link
-                    href="/"
+                    href={href}
                     className="group flex items-center"
                     aria-label={label}
                   >
