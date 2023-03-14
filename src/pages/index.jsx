@@ -56,9 +56,9 @@ function EpisodeEntry({ episode }) {
             date={date}
             className="order-first font-mono text-sm leading-7 text-slate-500"
           />
-          <p className="mt-1 text-base leading-7 text-slate-700">
+          {/* <p className="mt-1 text-base leading-7 text-slate-700">
             {episode.description}
-          </p>
+          </p> */}
           <div className="mt-4 flex items-center gap-4">
             <button
               type="button"
@@ -120,14 +120,14 @@ export default function Home({ episodes }) {
 }
 
 export async function getStaticProps() {
-  let feed = await parse('https://their-side-feed.vercel.app/api/feed')
+  let feed = await parse('https://anchor.fm/s/b77f9218/podcast/rss')
 
   return {
     props: {
       episodes: feed.items.map(
-        ({ id, title, description, enclosures, published }) => ({
-          id,
-          title: `${id}: ${title}`,
+        ({ title, description, enclosures, published }) => ({
+          id: title.split('.')[0],
+          title,
           published,
           description,
           audio: enclosures.map((enclosure) => ({
