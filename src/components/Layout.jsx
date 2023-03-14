@@ -153,11 +153,12 @@ function AboutSection(props) {
           !isExpanded && 'lg:line-clamp-4'
         )}
       >
-        In this show, Eric and Wes dig deep to get to the facts with guests who
-        have been labeled villains by a society quick to judge, without actually
-        getting the full story. Tune in every Thursday to get to the truth with
-        another misunderstood outcast as they share the missing context in their
-        tragic tale.
+        Are we getting too old for this sh*t? Should we go sober? Should we
+        start a podcast? With a decade (or two) of partying under their belts,
+        two best friends decide they need a change. Join Pedro and Isabel as
+        they finally start therapy, reflect on their relationship with alcohol,
+        and invite guests to share their own experiences of taking
+        accountability and finding out who they are outside of the bar.
       </p>
       {!isExpanded && (
         <button
@@ -173,7 +174,7 @@ function AboutSection(props) {
 }
 
 export function Layout({ children }) {
-  let hosts = ['Eric Gordon', 'Wes Mantooth']
+  let hosts = ['Pedro Fernandez', 'Isabel Colorado']
 
   return (
     <>
@@ -210,11 +211,10 @@ export function Layout({ children }) {
           </Link>
           <div className="mt-10 text-center lg:mt-12 lg:text-left">
             <p className="text-xl font-bold text-slate-900">
-              <Link href="/">Their Side</Link>
+              <Link href="/">This One&apos;s On Us</Link>
             </p>
             <p className="mt-3 text-lg font-medium leading-8 text-slate-700">
-              Conversations with the most tragically misunderstood people of our
-              time.
+              A sober (but not dry) podcast.
             </p>
           </div>
           <AboutSection className="mt-12 hidden lg:block" />
@@ -232,10 +232,26 @@ export function Layout({ children }) {
               className="mt-4 flex justify-center gap-10 text-base font-medium leading-7 text-slate-700 sm:gap-8 lg:flex-col lg:gap-4"
             >
               {[
-                ['Spotify', SpotifyIcon],
-                ['Apple Podcast', ApplePodcastIcon],
-                ['Overcast', OvercastIcon],
-                ['RSS Feed', RSSIcon],
+                [
+                  'Spotify',
+                  SpotifyIcon,
+                  'https://open.spotify.com/show/6wJRF2x3hkZmTAGE3wKUP1?si=9c8883415e12463a',
+                ],
+                [
+                  'Apple Podcast',
+                  ApplePodcastIcon,
+                  'https://podcasts.apple.com/us/podcast/this-ones-on-us/id1651165776?app=podcast',
+                ],
+                [
+                  'Overcast',
+                  OvercastIcon,
+                  'https://overcast.fm/itunes1651165776',
+                ],
+                [
+                  'RSS Feed',
+                  RSSIcon,
+                  'https://anchor.fm/s/b77f9218/podcast/rss',
+                ],
               ].map(([label, Icon]) => (
                 <li key={label} className="flex">
                   <Link
