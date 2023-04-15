@@ -186,7 +186,7 @@ export function Layout({ children }) {
               <Fragment key={host}>
                 {hostIndex !== 0 && (
                   <span aria-hidden="true" className="text-slate-400">
-                    /
+                    +
                   </span>
                 )}
                 {host}
