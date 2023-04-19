@@ -174,7 +174,7 @@ function AboutSection(props) {
 }
 
 export function Layout({ children }) {
-  let hosts = ['Pedro Fernandez', 'Isabel Colorado']
+  let hosts = ['Pedro', 'Isabel']
 
   return (
     <>
